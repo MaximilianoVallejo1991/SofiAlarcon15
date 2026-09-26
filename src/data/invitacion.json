@@ -1,77 +1,53 @@
 {
-  "nino": {
-    "nombre": "Franco Alejandro",
-    "apellido": "Díaz",
-    "frase": "Dejad que los niños vengan a mí, y no se lo impidáis, porque de los que son como ellos es el reino de los cielos.",
-    "fraseFuente": "Mateo 19:14",
-    "fotoPrincipal": "https://res.cloudinary.com/dc3kybsmr/image/upload/v1781874316/ale_en1ljx.png",
-    "galeria": [
-      "https://res.cloudinary.com/dc3kybsmr/image/upload/v1781874614/ale4_wqzwsq.jpg",
-      "https://res.cloudinary.com/dc3kybsmr/image/upload/v1781874615/ale3_sjzdjo.jpg",
-      "https://res.cloudinary.com/dc3kybsmr/image/upload/v1781874615/ale2_xpnx3o.jpg"
-    ]
+  "quinceanera": {
+    "nombre": "Sofía",
+    "apellido": "Alarcón",
+    "fotoPrincipal": "",
+    "galeria": []
   },
   "evento": {
-    "fecha": "15 de Agosto, 2026",
-    "hora": "17:00",
-    "titulo": "Mi Primera Comunión"
+    "fecha": "4 de Octubre, 2026",
+    "hora": "20:00",
+    "titulo": "Mis Quince Años"
   },
-  "misa": {
-    "iglesia": "Basílica de la Sagrada Família",
-    "direccion": "Carrer de Mallorca, 401, 08013 Barcelona, España",
-    "mapaEmbedUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2992.099!2d2.1743558!3d41.4036299!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12a4a2dcd83dfb93%3A0x9bd8aac21bc3c950!2sBas%C3%ADlica%20de%20la%20Sagrada%20Fam%C3%ADlia!5e0!3m2!1ses!2sar!4v1"
+  "fiesta": {
+    "lugar": "Salón de Eventos La Cabaña",
+    "direccion": "Gral. José de San Martín 1525, Concepción, Tucumán",
+    "hora": "12:00",
+    "mapaEmbedUrl": "https://maps.google.com/maps?q=LA+CABA%C3%91A,+Gral.+Jos%C3%A9+de+San+Mart%C3%ADn+1525,+Concepci%C3%B3n,+Tucum%C3%A1n&hl=es&z=16&output=embed"
   },
-  "recepcion": {
-    "lugar": "Islas Maldivas",
-    "direccion": "Atolón North Malé, Maldivas",
-    "hora": "19:00",
-    "mapaEmbedUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d102172.426!2d73.488!3d4.175!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b778b05d25a2525%3A0x7b4132ccc1b47755!2sMaldivas!5e0!3m2!1ses!2sar!4v1"
-  },
-  "codigoVestimenta": "Formal — sugerimos evitar colores blanco y marfil por respeto al agasajado.",
-  "oracion": {
-    "titulo": "Oración para Alejandro",
-    "texto": "Señor Jesús, que en este día tan especial recibes a Alejandro en la mesa de tu Eucaristía, te pedimos que lo acompañes siempre con tu amor y tu gracia. Que esta Primera Comunión sea el inicio de un camino de fe, esperanza y caridad. Bendice a su familia y a todos los que hoy celebramos junto a él. Amén."
-  },
-  "bendicion": {
-    "frase": "Den, y se les dará: se les echará en el regazo una medida llena, apretada, sacudida y desbordante. Porque con la medida que midan a otros, se les medirá a ustedes.",
-    "mensaje": "Lucas 6:38",
+  "codigoVestimenta": "Elegante Sport",
+  "regalo": {
+    "introTexto": "Tu presencia es el mejor regalo, pero si querés hacerme un presente...",
     "transferencia": {
-      "banco": "Banco Macro",
-      "alias": "-",
-      "cbu": "2850600140001032776037",
-      "titular": "Díaz Franco Alejandro"
+      "banco": "Banco a confirmar",
+      "alias": "alias.pendiente",
+      "cbu": "0000000000000000000000",
+      "titular": "Sofía Alarcón"
     }
   },
+  "cancion": {
+    "titulo": "Moment In The Sun",
+    "artista": "Sunflower Bean",
+    "url": "https://res.cloudinary.com/dc3kybsmr/video/upload/v1790449270/invitacion-15/Sunflower_Bean_-_Moment_In_The_Sun_odtxv1.mp3"
+  },
+  "fotosInvitados": {
+    "mensaje": "Subí las tuyas y ayudanos a armar el álbum del recuerdo."
+  },
   "rsvp": {
-    "telefono": "5493863510790",
-    "mensaje": "¡Hola! Quiero confirmar mi asistencia a la Primera Comunión de Alejandro."
+    "telefono": "5493865640532",
+    "mensaje": "¡Hola! Quiero confirmar mi asistencia a los 15 de Sofía."
   },
   "familia": {
     "padres": [
-      "Tomas Perez López",
-      "José Facundo López"
-    ],
-    "padrinos": [
-      "Nicolás Soria",
-      "Natalia Taraborelli"
+      "Jose Alarcon: +54 9 3865 63-9742",
+      "Maria Rodriguez: +54 9 3865 64-0532"
     ]
   },
   "navegacion": [
     {
       "label": "Inicio",
       "href": "#inicio"
-    },
-    {
-      "label": "Misa",
-      "href": "#misa"
-    },
-    {
-      "label": "Cronograma",
-      "href": "#cronograma"
-    },
-    {
-      "label": "Ubicación",
-      "href": "#ubicacion"
     },
     {
       "label": "Recepción",
@@ -82,19 +58,19 @@
       "href": "#galeria"
     },
     {
-      "label": "Oración",
-      "href": "#oracion"
-    },
-    {
-      "label": "Bendición",
-      "href": "#bendicion"
+      "label": "Regalo",
+      "href": "#regalo"
     },
     {
       "label": "Confirmar",
       "href": "#confirmar"
+    },
+    {
+      "label": "Tus Fotos",
+      "href": "#fotos"
     }
   ],
   "footer": {
-    "copyright": "© 2026 Alejandro Díaz — Mi Primera Comunión."
+    "copyright": "© 2026 Sofía Alarcón — Mis Quince Años."
   }
 }

@@ -4,29 +4,33 @@
 @import "./styles/components.css";
 
 @theme {
-  --color-background: var(--color-ivory);
+  --color-background: var(--color-sky);
   --color-surface: var(--color-white);
-  --color-cta: var(--color-gold);
-  --color-cta-hover: var(--color-gold-hover);
-  --color-primary: var(--color-purple);
-  --color-primary-light: var(--color-purple-light);
-  --color-text: var(--color-text-primary);
-  --color-text-muted: var(--color-text-muted);
+  --color-cta: var(--color-rose);
+  --color-cta-hover: var(--color-rose-hover);
+  --color-text: var(--color-ink);
+  --color-text-muted: var(--color-ink-muted);
+  --color-success: var(--color-success-dark);
+  /* ponytail: decorative-only utilities — bg/border/ring, never text-* */
+  --color-accent-pink: var(--color-blossom);
+  --color-accent-yellow: var(--color-butter);
+  --color-accent-mint: var(--color-mint);
   --font-script: var(--font-great-vibes);
   --font-serif: var(--font-cormorant);
 }
 
 html {
-  font-size: 22px;
+  font-size: 22px;              /* unchanged — elderly readability */
   scroll-behavior: smooth;
   scroll-snap-type: y proximity;
+  overflow-x: hidden;           /* ponytail: defensive backstop — see components/sections/Gift.jsx
+                                    (CBU/alias rows) for the actual overflow source that was
+                                    found and fixed. Safe here: no `position: sticky` anywhere
+                                    in the codebase for this backstop to break. */
 }
 
 @media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-    scroll-snap-type: none;
-  }
+  html { scroll-behavior: auto; scroll-snap-type: none; }
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
     transition-duration: 0.01ms !important;
@@ -37,4 +41,39 @@ body {
   background-color: var(--color-background);
   color: var(--color-text);
   font-family: var(--font-serif);
+  overflow-x: hidden;           /* ponytail: Safari sometimes needs this on both html AND
+                                    body for the backstop to be reliable — see html rule above */
+}
+
+/* ponytail: floral backdrop — viewport-fixed, never tiles, never stretches past cover.
+   A pseudo-element instead of background-attachment:fixed, which janks on iOS Safari. */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  /* ponytail: mobile jitter fix — `inset: 0` computes height from top+bottom against the
+     CURRENT viewport, which iOS/Android recompute on every frame while the address bar
+     collapses/expands mid-scroll. That recomputation is what visibly resized/shifted the
+     `cover` background. Pinning height to `100lvh` (large viewport height = size with
+     browser chrome fully retracted) gives a value that never fluctuates — the layer is
+     simply clipped by the smaller visual viewport when the toolbar is showing, instead of
+     being resized. Cascade order matters: later valid values win, earlier ones are the
+     fallback for browsers without dvh/lvh support. */
+  height: 100vh;
+  height: 100dvh;
+  height: 100lvh;
+  z-index: -1;
+  background-image: var(--img-backdrop);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  pointer-events: none;
+  /* ponytail: promotes this layer to its own GPU compositing layer — mitigates a known
+     WebKit bug where `position: fixed` elements visibly jump/flicker while CSS scroll-snap
+     settles on iOS Safari. `translateZ(0)` is a no-op transform used purely as a
+     compositing hint, it does not move the element. */
+  transform: translateZ(0);
+  will-change: transform;
 }

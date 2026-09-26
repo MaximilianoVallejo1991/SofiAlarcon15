@@ -3,7 +3,7 @@ export default function Gallery({ imagenes }) {
 
   return (
     <section id="galeria" className="section-padding max-w-6xl mx-auto">
-      <div className="gold-divider" />
+      <div className="divider-accent" />
 
       <h2 className="font-script text-4xl text-center text-cta mb-10">
         Galería

@@ -1,4 +1,5 @@
 import { useRef, useState, useEffect } from 'react'
+import PlayPauseButton from '../shared/PlayPauseButton'
 
 // ponytail: parse "15 de Diciembre, 2026" → valid Date
 const parseDate = (str) => {
@@ -7,9 +8,13 @@ const parseDate = (str) => {
   return m ? new Date(`${m[3]}-${months[m[2]]}-${m[1]}`) : null
 }
 
-export default function Hero({ nombre, apellido, fotoPrincipal, frase, fraseFuente, fecha }) {
+export default function Hero({ nombre, apellido, fotoPrincipal, titulo, fecha, cancion, playing, onToggleSong, hasSong }) {
   const [daysLeft, setDaysLeft] = useState(null)
   const timerRef = useRef(null)
+
+  // Song fields renamed on destructure — `titulo` above already means evento.titulo.
+  // Playback state/toggle now lives in App.jsx; this component is presentational.
+  const { titulo: cancionTitulo } = cancion || {}
 
   // ponytail: vanilla countdown — cheap, zero deps
   useEffect(() => {
@@ -33,29 +38,48 @@ export default function Hero({ nombre, apellido, fotoPrincipal, frase, fraseFuen
   return (
     <section
       id="inicio"
-      className="min-h-screen flex flex-col items-center justify-center section-padding pt-24 text-center bg-gradient-to-b from-background to-cta/[0.03]"
+      className="min-h-screen flex flex-col items-center justify-center section-padding pt-24 text-center"
     >
-      {/* Photo */}
-      <div className="mb-8">
-        {fotoPrincipal ? (
-          <img
-            src={fotoPrincipal}
-            alt={`${nombre} ${apellido}`}
-            className="w-40 h-40 sm:w-48 sm:h-48 rounded-full object-cover ring-4 ring-cta/40 shadow-lg cursor-default"
-          />
-        ) : (
-          /* ponytail: CSS fallback when no photo */
-          <div className="w-40 h-40 sm:w-48 sm:h-48 rounded-full bg-cta/10 ring-4 ring-cta/20 flex items-center justify-center cursor-default">
-            <span className="font-script text-5xl text-cta/40">
-              {nombre.charAt(0)}{apellido.charAt(0)}
-            </span>
-          </div>
-        )}
+      {/* Photo + song toggle */}
+      <div className="mb-8 relative">
+        <button
+          id="hero-avatar"
+          type="button"
+          onClick={onToggleSong}
+          aria-label={hasSong ? (playing ? `Pausar canción${cancionTitulo ? `: ${cancionTitulo}` : ''}` : `Reproducir canción${cancionTitulo ? `: ${cancionTitulo}` : ''}`) : undefined}
+          className={`relative w-40 h-40 sm:w-48 sm:h-48 rounded-full ring-4 ring-cta/40 shadow-lg ${hasSong ? 'cursor-pointer' : 'cursor-default'}`}
+        >
+          <span className="absolute inset-0 rounded-full overflow-hidden">
+            {fotoPrincipal ? (
+              <img
+                src={fotoPrincipal}
+                alt={`${nombre} ${apellido}`}
+                className="w-full h-full object-cover"
+              />
+            ) : (
+              /* CSS fallback when no photo — solid bg-white + full-opacity text-cta,
+                 the previous bg-cta/10 + text-cta/40 combo was two washed-out tints of the
+                 same hue and was nearly invisible */
+              <span className="w-full h-full flex items-center justify-center bg-white">
+                <span className="font-script text-6xl text-cta">{nombre.charAt(0)}</span>
+              </span>
+            )}
+          </span>
+          {hasSong && (
+            <PlayPauseButton
+              id="hero-play-badge"
+              playing={playing}
+              interactive={false}
+              size="badge"
+              className="absolute bottom-1 right-1 sm:bottom-2 sm:right-2"
+            />
+          )}
+        </button>
       </div>
 
-      {/* ponytail: subtitle */}
+      {/* ponytail: subtitle sourced from evento.titulo */}
       <p className="font-script text-3xl sm:text-4xl text-cta mb-2">
-        Mi Primera Comunión
+        {titulo}
       </p>
 
       {/* Name */}
@@ -69,7 +93,7 @@ export default function Hero({ nombre, apellido, fotoPrincipal, frase, fraseFuen
 
       {/* Countdown */}
       {daysLeft !== null && (
-        <div className="mb-8">
+        <div>
           {daysLeft > 0 ? (
             <p className="text-sm text-text-muted tracking-wide">
               Faltan{' '}
@@ -81,16 +105,6 @@ export default function Hero({ nombre, apellido, fotoPrincipal, frase, fraseFuen
           )}
         </div>
       )}
-
-      {/* Verse */}
-      <blockquote className="max-w-lg mx-auto mt-4">
-        <p className="font-serif italic text-text-muted text-lg leading-relaxed">
-          «{frase}»
-        </p>
-        <footer className="mt-2 text-sm text-text-muted/70">
-          — {fraseFuente}
-        </footer>
-      </blockquote>
     </section>
   )
 }

@@ -1,23 +1,23 @@
 /* ponytail: component classes Tailwind can't express in a single utility */
 
 .glass-card {
-  background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, 0.82);   /* was 0.7 */
+  backdrop-filter: blur(16px);             /* was 12px — dissolves floral shapes into a wash */
+  -webkit-backdrop-filter: blur(16px);
   border-radius: var(--radius-card);
   box-shadow: var(--shadow-glass);
-  border: 1px solid rgba(202, 138, 4, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.9);  /* was rgba(202,138,4,.15) — near-invisible over a busy bg */
   padding: 1.5rem;
   transition: box-shadow 200ms ease;
   cursor: default;
 }
 
 .glass-card:hover {
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+  box-shadow: var(--shadow-glass-hover);
 }
 
 .btn-primary {
-  background: var(--color-gold);
+  background: var(--color-rose);
   color: var(--color-white);
   padding: 0.75rem 2rem;
   border-radius: 0.5rem;
@@ -30,17 +30,17 @@
 }
 
 .btn-primary:hover {
-  background: var(--color-gold-hover);
+  background: var(--color-rose-hover);
   transform: translateY(-1px);
 }
 
 .btn-primary:focus-visible {
-  outline: 3px solid var(--color-gold);
+  outline: 3px solid var(--color-rose);
   outline-offset: 2px;
 }
 
 .btn-cta {
-  background: var(--color-gold);
+  background: var(--color-rose);
   color: var(--color-white);
   padding: 1rem 2.5rem;
   border-radius: 9999px;
@@ -57,20 +57,20 @@
 }
 
 .btn-cta:hover {
-  background: var(--color-gold-hover);
+  background: var(--color-rose-hover);
   transform: translateY(-2px);
-  box-shadow: var(--shadow-gold);
+  box-shadow: var(--shadow-cta);
 }
 
 .btn-cta:focus-visible {
-  outline: 3px solid var(--color-gold);
+  outline: 3px solid var(--color-rose);
   outline-offset: 2px;
 }
 
-.gold-divider {
+.divider-accent {
   width: 6rem;
   height: 2px;
-  background: linear-gradient(to right, transparent, var(--color-gold), transparent);
+  background: linear-gradient(to right, transparent, var(--color-rose), transparent);
   margin: 2rem auto;
 }
 
@@ -91,7 +91,7 @@
 }
 
 .copyable:hover {
-  color: var(--color-gold);
+  color: var(--color-rose);
 }
 
 /* ponytail: scroll-margin for sticky nav + scroll snap */
@@ -99,3 +99,13 @@ section[id] {
   scroll-margin-top: 5rem;
   scroll-snap-align: start;
 }
+
+/* The navbar's audio visualizer (originally a hand-rolled CSS/SVG
+   "breathing wave", then briefly a WaveSurfer.js pre-rendered waveform) is
+   now a genuine real-time visualizer built on the native Web Audio API:
+   an AnalyserNode (created in App.jsx) feeds live frequency data into a
+   requestAnimationFrame loop in Navbar.jsx that draws directly onto a
+   <canvas>. No CSS is needed for it — sizing and layering are plain
+   Tailwind utility classes on the canvas element, and all drawing happens
+   imperatively via the Canvas 2D API, not CSS animation/keyframes.
+   See `sdd/quinceanera-conversion/design` for the revision note. */

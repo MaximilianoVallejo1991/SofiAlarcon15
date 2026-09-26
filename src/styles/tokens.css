@@ -1,23 +1,34 @@
 :root {
-  /* Palette — ivory predominant */
-  --color-ivory: #FDF5E6;
-  --color-white: #FFFFFF;
-  --color-gold: #CA8A04;
-  --color-gold-hover: #B07D04;
-  --color-purple: #7C3AED;
-  --color-purple-light: #A78BFA;
-  --color-text-primary: #2D1B00;
-  --color-text-muted: #8B7355;
+  /* ponytail: palette extracted from the floral backdrop via Cloudinary color analysis */
+  /* Image colors — DECORATIVE ONLY. Never use these as text color. */
+  --color-sky: #C7ECFE;      /* 91% of the image — the page base */
+  --color-butter: #F3F4C9;   /* 1.7% */
+  --color-blossom: #F1D3D8;  /* 1.4% */
+  --color-mint: #D1EDCA;     /* 1.3% */
 
-  /* Fonts */
+  /* Derived accent — pastel blossom pulled to HSL(350, 45%, 42%) so it can carry white text */
+  --color-rose: #9B3B4B;
+  --color-rose-hover: #81313E;
+
+  /* ponytail: text neutrals — the 4 image colors all fail as text, these are computed for AA */
+  --color-ink: #1F3A4D;
+  --color-ink-muted: #415A66;
+  --color-success-dark: #26663F;
+  --color-white: #FFFFFF;
+
+  /* Fonts — unchanged, Great Vibes + Cormorant Infant already suit a quinceanera */
   --font-great-vibes: 'Great Vibes', cursive;
   --font-cormorant: 'Cormorant Infant', serif;
 
-  /* Shadows */
-  --shadow-glass: 0 8px 32px rgba(0, 0, 0, 0.08);
-  --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.06);
-  --shadow-gold: 0 8px 24px rgba(202, 138, 4, 0.3);
+  /* Shadows — tinted with the ink navy instead of pure black so they read as haze, not dirt */
+  --shadow-glass: 0 8px 32px rgba(31, 58, 77, 0.14);
+  --shadow-glass-hover: 0 12px 40px rgba(31, 58, 77, 0.20);
+  --shadow-card: 0 2px 8px rgba(31, 58, 77, 0.10);
+  --shadow-cta: 0 8px 24px rgba(155, 59, 75, 0.28);
 
   /* Radius */
   --radius-card: 1rem;
+
+  /* ponytail: backdrop asset — f_auto,q_auto lets Cloudinary serve WebP/AVIF for free */
+  --img-backdrop: url('https://res.cloudinary.com/dc3kybsmr/image/upload/f_auto,q_auto/v1790443142/invitacion-15/fondo-flores-pastel.jpg');
 }

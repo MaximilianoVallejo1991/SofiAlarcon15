@@ -9,7 +9,7 @@ export default function Reception({
 }) {
   return (
     <section id="recepcion" className="section-padding max-w-4xl mx-auto">
-      <div className="gold-divider" />
+      <div className="divider-accent" />
 
       <h2 className="font-script text-4xl text-center text-cta mb-10">
         Recepción
