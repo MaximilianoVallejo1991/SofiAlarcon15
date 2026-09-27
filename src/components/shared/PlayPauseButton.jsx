@@ -20,7 +20,10 @@ export default function PlayPauseButton({
 }) {
   const { wrapper, icon } = SIZE_MAP[size] ?? SIZE_MAP.badge
   const iconEl = playing ? <Pause size={icon} /> : <Play size={icon} />
-  const baseClassName = `rounded-full bg-cta text-white flex items-center justify-center shadow-md ring-2 ring-white ${wrapper} ${className}`
+  // Pulses only while paused — an invitation to tap, not needed once the
+  // user has already interacted and the song is audibly playing.
+  const inviteClass = playing ? '' : 'invite-pulse'
+  const baseClassName = `relative rounded-full bg-cta text-white flex items-center justify-center shadow-md ring-2 ring-white ${wrapper} ${inviteClass} ${className}`
 
   if (!interactive) {
     return (

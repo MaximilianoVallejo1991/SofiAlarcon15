@@ -109,3 +109,32 @@ section[id] {
    Tailwind utility classes on the canvas element, and all drawing happens
    imperatively via the Canvas 2D API, not CSS animation/keyframes.
    See `sdd/quinceanera-conversion/design` for the revision note. */
+
+/* "Tap me" affordance on the play/pause button while paused — a soft scale
+   pulse plus an expanding, fading ring so it reads as interactive even to
+   someone who has never seen this UI before. The global
+   prefers-reduced-motion rule in index.css already collapses both
+   animations to near-zero duration, so no separate override is needed
+   here. */
+.invite-pulse {
+  animation: invite-pulse-scale 2.4s ease-in-out infinite;
+}
+
+.invite-pulse::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: var(--color-rose);
+  animation: invite-pulse-ring 2.4s ease-out infinite;
+}
+
+@keyframes invite-pulse-scale {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+}
+
+@keyframes invite-pulse-ring {
+  0% { transform: scale(1); opacity: 0.55; }
+  70%, 100% { transform: scale(1.6); opacity: 0; }
+}
