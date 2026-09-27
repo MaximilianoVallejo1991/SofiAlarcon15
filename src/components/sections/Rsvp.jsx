@@ -7,7 +7,7 @@ export default function Rsvp({ telefono, mensaje }) {
     <section id="confirmar" className="section-padding max-w-2xl mx-auto text-center">
       <div className="divider-accent" />
 
-      <h2 className="font-script text-4xl text-cta mb-4">r Asistencia</h2>
+      <h2 className="font-script text-4xl text-cta mb-4">Confirmar asistencia</h2>
       <p className="text-text-muted mb-8">
         Por favor confirmá tu asistencia hasta el 01 de octubre
       </p>
