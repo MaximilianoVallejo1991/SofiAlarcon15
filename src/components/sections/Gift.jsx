@@ -52,7 +52,7 @@ export default function Gift({ introTexto, transferencia }) {
             <span className="text-text-muted text-sm shrink-0">Alias</span>
             <button
               onClick={() => handleCopy(alias, 'alias')}
-              className="copyable flex items-center gap-2 min-w-0 break-all text-right text-text font-semibold focus-visible:ring-3 focus-visible:ring-cta rounded"
+              className="copyable flex items-center gap-2 min-w-0 whitespace-nowrap text-right text-text font-semibold text-xs sm:text-base focus-visible:ring-3 focus-visible:ring-cta rounded"
             >
               {alias}
               {copied === 'alias' ? (
