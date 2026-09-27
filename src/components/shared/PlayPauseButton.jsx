@@ -22,8 +22,17 @@ export default function PlayPauseButton({
   const iconEl = playing ? <Pause size={icon} /> : <Play size={icon} />
   // Pulses only while paused — an invitation to tap, not needed once the
   // user has already interacted and the song is audibly playing.
+  //
+  // No `relative` forced in here: the invite-pulse ring only needs SOME
+  // positioned ancestor (relative/absolute/fixed all qualify), and the
+  // Hero badge usage already passes `absolute` via `className` below —
+  // adding `relative` here too put two conflicting position utilities on
+  // the same element, and Tailwind's generated stylesheet order let
+  // `relative` win over the caller's `absolute`, breaking the badge's
+  // real bottom-right placement. Callers with no position class of their
+  // own (the Navbar dock button) pass `relative` themselves instead.
   const inviteClass = playing ? '' : 'invite-pulse'
-  const baseClassName = `relative rounded-full bg-cta text-white flex items-center justify-center shadow-md ring-2 ring-white ${wrapper} ${inviteClass} ${className}`
+  const baseClassName = `rounded-full bg-cta text-white flex items-center justify-center shadow-md ring-2 ring-white ${wrapper} ${inviteClass} ${className}`
 
   if (!interactive) {
     return (

@@ -324,7 +324,7 @@ export default function Navbar({ sections, playing, onToggleSong, hasSong, analy
             transform: `translate(-50%, -50%) scale(${docked ? 1 : 0.75})`,
           }}
         >
-          <PlayPauseButton playing={playing} onToggle={onToggleSong} size="dock" />
+          <PlayPauseButton playing={playing} onToggle={onToggleSong} size="dock" className="relative" />
         </div>
       )}
     </nav>
